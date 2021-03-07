@@ -1,0 +1,22 @@
+<section class="movie-details">
+    <div class="container">
+        <div class="card">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <img class="card img-fluid" [src]="movie.poster_path" alt="Card image cap" />
+                </div>
+                <div class="col-12 col-lg-6 m-auto">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ movie.title }}</h5>
+                        <p class="card-text">{{ movie.overview }}</p>
+                        <p class="card-text">
+                            <small class="text-muted">{{
+                movie.release_date | date: "MMMM YYYY"
+              }}</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

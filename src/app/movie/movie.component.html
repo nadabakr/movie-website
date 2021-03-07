@@ -1,0 +1,23 @@
+<header class="bg-light mb-5">
+    <div class="container">
+        <h1>Unlimited movies and more.</h1>
+        <p class="text-secondary">
+            Don't know what to watch tonight? Here are some of the best movies.
+        </p>
+        <span class="font-weight-bolder">Have FUN</span>
+    </div>
+</header>
+<main>
+    <section class="films">
+        <div class="container">
+            <div class="row">
+                <div class="card col-12 col-lg-5 mb-5 ml-5" *ngFor="let movie of movieInfo; let i = index">
+                    <img [src]="movie.poster_path" class="card-img-top" [alt]="movie.title" />
+                    <div class="card-body">
+                        <a [routerLink]="['moviedetails', movie.id]">{{ movie.title }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

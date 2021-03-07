@@ -1,0 +1,51 @@
+<section class="login">
+    <form class="w-50 m-auto p-5 border" #loginform="ngForm" (ngSubmit)="submitLoginForm(loginform)" name="form">
+        <h1 class="bg-dark text-white p-3">Sign In</h1>
+        <div class="form-group pt-4">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required ngModel name="userEmail" #userEmail="ngModel" [email]="true" />
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small
+      >
+    </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="userEmail.touched && !userEmail.valid"
+    >
+      <div *ngIf="userEmail.errors.required" style="color: red">
+        Please enter your email
+      </div>
+      <div *ngIf="userEmail.errors.email" style="color: red">
+        Please enter vaild E-mail
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        required
+        ngModel
+        name="userPass"
+        #userPass="ngModel"
+      />
+    </div>
+    <div class="alert alert-danger" *ngIf="userPass.touched && !userPass.valid">
+      <div *ngIf="userPass.errors.required" style="color: red">
+        Please enter your password
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary media m-auto"
+      [routerLink]="['/']"
+      [disabled]="!loginform.valid"
+    >
+      Login
+    </button>
+  </form>
+  <h6 class="pt-5 text-center">
+    Don't have account? <a [routerLink]="['/registration']">Register</a>
+  </h6>
+</section>

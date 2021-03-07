@@ -1,0 +1,75 @@
+<section class="registration">
+    <h1 class="bg-dark text-white text-center p-3">Welcome to our site</h1>
+    <form class="w-50 m-auto p-5" [formGroup]="registerForm" (ngSubmit)="submitRegisForm()">
+        <div class="form-group">
+            <label for="exampleInputName">Name</label>
+            <input type="text" class="form-control" id="exampleInputName" formControlName="name" />
+        </div>
+        <div class="alert alert-danger" *ngIf="regisFormControl.name.touched && !regisFormControl.name.valid">
+            <div *ngIf="regisFormControl.name.errors.required" style="color: red">
+                Please enter your Name
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email" />
+        </div>
+        <div class="alert alert-danger" *ngIf="regisFormControl.email.touched && !regisFormControl.email.valid">
+            <div *ngIf="regisFormControl.email.errors.required" style="color: red">
+                Please enter your E-mail
+            </div>
+            <div *ngIf="regisFormControl.email.errors.pattern" style="color: red">
+                Please enter valid E-mail
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputUserName">User Name</label>
+            <input type="text" class="form-control" id="exampleInputUserName" formControlName="userName" />
+        </div>
+        <div class="alert alert-danger" *ngIf="
+        regisFormControl.userName.touched && !regisFormControl.userName.valid
+      ">
+            <div *ngIf="regisFormControl.userName.errors.required" style="color: red">
+                Please enter your username
+            </div>
+            <div *ngIf="regisFormControl.userName.errors.pattern" style="color: red">
+                username must be with any space
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password" />
+        </div>
+        <div class="alert alert-danger" *ngIf="
+        regisFormControl.password.touched && !regisFormControl.password.valid
+      ">
+            <div *ngIf="regisFormControl.password.errors.required" style="color: red">
+                Please enter your password
+            </div>
+            <div *ngIf="regisFormControl.password.errors.minLength" style="color: red">
+                password must be more thar 8 characters
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputConfirmPassword">Confirm Password</label>
+            <input type="password" class="form-control" id="exampleInputConfirmPassword" formControlName="confirmPass" />
+        </div>
+        <div class="alert alert-danger" *ngIf="
+        regisFormControl.confirmPass.touched &&
+        !regisFormControl.confirmPass.valid
+      ">
+            <div *ngIf="regisFormControl.confirmPass.errors.required" style="color: red">
+                Please confirm your password
+            </div>
+            <div *ngIf="regisFormControl.confirmPass.errors.compare" style="color: red">
+                Don't match password
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary m-auto media" [routerLink]="['/login']" [disabled]="!registerForm.valid">
+      Register
+    </button>
+    </form>
+    <h6 class="pt-3 text-center">
+        Already you have account?> <a [routerLink]="['/login']">Login</a>
+    </h6>
+</section>
